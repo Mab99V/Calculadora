@@ -1,107 +1,143 @@
-var  a
-var  b
-var  resultado
-
-function  sumar( )  {
-    var  numero1 = documento.getElementById ("a");
-    var  numero2 = documento.getElementById ("b");
-    
-    a = numero1.valor;
-    b = numero2.valor;
-    
-    consola.registro(a,b);
-    resultado = parseInt(a) + parseInt(b);
-    consola.log(resultado);
-
-    var  areaElement = documento . getElementById ("resultado");
-    areaElement.innerHTML = 'Resultado =' + resultado;
+var operandoa;
+var operandob;
+var operacion;
+function init(){
+   var resultado= document.getElementById("resultado");
+   var ElevarNumero= document.getElementById("ElevarNumero");
+   var raiz= document.getElementById("raiz");
+   var suma= document.getElementById("suma");
+   var resta= document.getElementById("resta");
+   var division= document.getElementById("division");
+   var multiplicacion = document.getElementById("multiplicacion");
+   var Coseno= document.getElementById("Coseno");
+   var Seno= document.getElementById("Seno");
+   var uno= document.getElementById("uno");
+   var dos= document.getElementById("dos");
+   var tres= document.getElementById("tres");
+   var cuatro= document.getElementById("cuatro");
+   var cinco= document.getElementById("cinco");
+   var seis= document.getElementById("seis");
+   var siete= document.getElementById("siete");
+   var ocho= document.getElementById("ocho");
+   var nueve= document.getElementById("nueve");
+   var cero= document.getElementById("cero");
+   var reset= document.getElementById("reset");
+   var igual= document.getElementById("igual");
+  
+   uno.onclick= function(e){
+        resultado.textContent = resultado.textContent + "1"     
+   }
+   dos.onclick= function(e){
+        resultado.textContent = resultado.textContent + "2"     
+   }
+   tres.onclick= function(e){
+        resultado.textContent = resultado.textContent + "3"     
+   }
+   cuatro.onclick= function(e){
+        resultado.textContent = resultado.textContent + "4"     
+   }
+   cinco.onclick= function(e){
+        resultado.textContent = resultado.textContent + "5"     
+   }
+   seis.onclick= function(e){
+        resultado.textContent = resultado.textContent + "6"     
+   }
+   siete.onclick= function(e){
+        resultado.textContent = resultado.textContent + "7"     
+   }
+   ocho.onclick= function(e){
+        resultado.textContent = resultado.textContent + "8"     
+   }
+   nueve.onclick= function(e){
+        resultado.textContent = resultado.textContent + "9"     
+   }
+   cero.onclick= function(e){
+        resultado.textContent = resultado.textContent + "0"     
+   }
+   reset.onclick= function(e){
+        resetear();    
+   }
+    suma.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "+";
+        limpiar();     
+   }
+    resta.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "-";
+        limpiar();     
+   }
+    multiplicacion.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "*";
+        limpiar();     
+   }
+    division.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "/";
+        limpiar();     
+   }
+    raiz.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "raiz";
+        limpiar();     
+   }
+    ElevarNumero.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "X^2";
+        limpiar();
+        resolver();  
+   }
+   Coseno.onclick = function(){
+        operandoa = resultado.textContent;
+        operacion = "Cos";
+        limpiar();     
+   }
+     Seno.onclick= function(e){
+        operandoa = resultado.textContent;
+        operacion = "Sin";
+        limpiar();     
+   }
+      igual.onclick= function(e){
+        operandob = resultado.textContent;
+        resolver();   
+   }
+     
 }
 
-function  restar( )  {
-    var  numero1 = documento.getElementById("a");
-    var  numero2 = documento.getElementById("b");
-    
-    a = numero1.valor ;
-    b = numero2.valor;
-    
-    consola.registro(a,b);
-    resultado = parseInt ( a ) - parseInt ( b );
-    consola.log(resultado);
+function limpiar(){
+     resultado.textContent="";
+   }
+function resetear(){
+     resultado.textContent="";
+     operandoa=0;
+     operandob=0;
+     operacion="";
+   }
 
-    var  areaElement = documento.getElementById ("resultado") ;
-    areaElement.innerHTML = 'Resultado =' + resultado;
+function resolver(){
+     var res=0;
+     switch(operacion){
+        case"+":
+             res = parseFloat(operandoa) + parseFloat(operandob);
+             break;
+ 
+        case"-":
+           res = parseFloat(operandoa) - parseFloat(operandob);
+           break;
 
+        case"*":
+           res = parseFloat(operandoa) * parseFloat(operandob);
+           break;
+   
+        case"/":
+           res = parseFloat(operandoa) / parseFloat(operandob);
+           break;
 
-}
-
-function  multiplicar( )  {
-    var  numero1 = documento.getElementById ("a");
-    var  numero2 = documento.getElementById ("b");
-    
-    a = numero1.valor;
-    b = numero2.valor;
-    
-    consola.registro(a , b);
-    resultado = a * b;
-    consola.log (resultado);
-
-    var  areaElement = documento.getElementById ("resultado") ;
-    areaElement.innerHTML = 'Resultado =' + resultado;
-
-
-}
-
-function  dividir( )  {
-    var  numero1 = documento.getElementById ("a");
-    var  numero2 = documento.getElementById ("b");
-    
-    a = numero1.valor ;
-    b = numero2.valor;
-    
-    consola.registro(a,b);
-    resultado= a/b;
-    consola.log(resultado);
-
-    var  areaElement = documento.getElementById ("resultado") ;
-    areaElement.innerHTML ='Resultado ='+ resultado;
-}
-function  elevar( )  {
-    var  numero1 = documento.getElementById("a");
-
-    a = numero1.valor;
-    
-    consola.registro(a);
-    resultado = Math.pow(a,2);
-    consola.log(resultado);
-
-    var  areaElement = documento.getElementById("resultado");
-    areaElement.innerHTML = 'Resultado =' + resultado;
-}
-
-function  raiz( )  {
-    var  numero1 = documento.getElementById("a");
-
-    a = numero1.valor;
-    
-    consola.registro(a);
-    resultado = Math.sqrt(a);
-    consola.log(resultado);
-
-    var  areaElement = documento.getElementById("resultado");
-    areaElement.innerHTML = 'Resultado =' + resultado;
-}
-
-function  elevarNumero( )  {
-    var  numero1  = documento.getElementById("a");
-    var  numero2  = documento.getElementById ("b");
-
-    a = numero1.valor;
-    b = numero2.valor;
-    
-    consola.registro(a,b);
-    resultado = Math.pow(a,b);
-    consola.log(resultado );
-
-    var  areaElement = documento.getElementById("resultado");
-    areaElement.innerHTML = 'Resultado =' + resultado;
+        case"X^2":
+           res = parseFloat(operandoa) **2;
+           break;
+  }
+  resetear();
+  resultado.textContent = res;
 }
